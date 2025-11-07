@@ -5,21 +5,6 @@
     text-align: center;
 }
 
-/* .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-} */
-
-/* .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-} */
-
 @keyframes logo-spin {
     from {
         transform: rotate(0deg);
@@ -463,69 +448,69 @@ li {
 
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 :root {
-  --black: #333333;
-  --white: #f5f5f5;
-	--transition: 0.5s ease;
+    --black: #333333;
+    --white: #f5f5f5;
+    --transition: 0.5s ease;
 }
 
 .hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 .toggle-wrapper {
-  width: 130px;
-  display: block;
+    width: 130px;
+    display: block;
 }
 
 .toggle {
-  height: 65px;
-  width: 130px;
-  background: var(--black);
-  border-radius: 40px;
-  padding: 12px;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
+    height: 65px;
+    width: 130px;
+    background: var(--black);
+    border-radius: 40px;
+    padding: 12px;
+    position: relative;
+    margin: auto;
+    cursor: pointer;
 }
 
 
 .toggle::before {
-  content: "";
-  display: block;
-  height: 41px;
-  width: 41px;
-  border-radius: 30px;
-  background: var(--white);
-  position: absolute;
-  z-index: 2;
-  transform: translate(0);
-  transition: transform var(--transition);
+    content: "";
+    display: block;
+    height: 41px;
+    width: 41px;
+    border-radius: 30px;
+    background: var(--white);
+    position: absolute;
+    z-index: 2;
+    transform: translate(0);
+    transition: transform var(--transition);
 }
 
 .toggle.enabled::before {
-  transform: translateX(65px);
+    transform: translateX(65px);
 }
 
 .toggle input {
-	position: absolute;
-	top: 0;
-  opacity: 0;
+    position: absolute;
+    top: 0;
+    opacity: 0;
 }
 
 /* Theme toggle: estilos compartidos */
 .theme-toggle {
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: inherit;
     padding: 0.35rem 0.6rem;
     border-radius: 8px;
@@ -540,28 +525,37 @@ li {
 
 /* Desktop: mostrar toggle en extremo derecho, enlaces siguen centrados */
 .theme-toggle-desktop {
-    display: none; /* por defecto oculto, se muestra en desktop con media query */
+    display: none;
+    /* por defecto oculto, se muestra en desktop con media query */
 }
 
 @media screen and (min-width: 769px) {
-    .theme-toggle-mobile { display: none !important; } /* ocultar versión móvil */
+    .theme-toggle-mobile {
+        display: none !important;
+    }
+
+    /* ocultar versión móvil */
 
     .theme-toggle-desktop {
         display: inline-flex;
         position: absolute;
-        right: 1.5rem;        /* separación desde el borde derecho de la navbar */
+        right: 1.5rem;
+        /* separación desde el borde derecho de la navbar */
         top: 50%;
         transform: translateY(-50%);
         z-index: 1500;
     }
 
     /* asegurar que el navbar-container sea referencia para el absolute */
-    .navbar-container { position: relative; }
+    .navbar-container {
+        position: relative;
+    }
 }
 
 /* Móvil: toggle dentro del menú (después de los enlaces) */
 .theme-toggle-mobile {
-    display: none; /* visible solo en móvil por la media query siguiente */
+    display: none;
+    /* visible solo en móvil por la media query siguiente */
     width: 100%;
     justify-content: center;
     padding: 0.6rem 1rem;
@@ -570,13 +564,16 @@ li {
 
 /* estilo del wrapper dentro del UL para que ocupe línea completa */
 .theme-toggle-mobile-wrap {
-    display: none; /* se muestra en móvil */
+    display: none;
+    /* se muestra en móvil */
     width: 100%;
 }
 
 /* comportamiento en móviles: mostrar el toggle dentro del menú, ocultar el desktop */
 @media screen and (max-width: 768px) {
-    .theme-toggle-desktop { display: none !important; }
+    .theme-toggle-desktop {
+        display: none !important;
+    }
 
     .theme-toggle-mobile {
         display: inline-flex !important;
@@ -590,7 +587,7 @@ li {
     /* asegurar que el botón dentro del menú tenga buen contraste y tamaño */
     .theme-toggle-mobile {
         background: transparent;
-        border: 1px solid rgba(255,255,255,0.06);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         color: var(--color-text);
         border-radius: 8px;
     }
@@ -600,7 +597,8 @@ li {
 .theme-toggle,
 .theme-toggle-mobile {
     background: transparent;
-    border: none;               /* igual que .menu-toggle */
+    border: none;
+    /* igual que .menu-toggle */
     color: inherit;
     padding: 0.35rem 0.6rem;
     border-radius: 8px;
@@ -625,4 +623,175 @@ li {
     outline: none;
     box-shadow: 0 0 0 4px rgba(217, 139, 43, 0.16);
     border-color: transparent;
+}
+
+/* accesibilidad: oculto visual pero disponible para screen readers */
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* theme switch base */
+.theme-switch {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* track y thumb */
+.theme-switch__track {
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 3px;
+    box-sizing: border-box;
+    transition: background-color 180ms ease;
+}
+
+.theme-switch__thumb {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translateX(0);
+    transition: transform 180ms ease, background-color 180ms ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* estado "checked" (dark) -> desplazar thumb a la derecha y cambiar colores */
+.theme-switch[aria-checked="true"] .theme-switch__track {
+    background: rgba(217, 139, 43, 0.95);
+    /* ejemplo ámbar; usa tu variable si querés */
+}
+
+.theme-switch[aria-checked="true"] .theme-switch__thumb {
+    transform: translateX(20px);
+    background: #1f1f1f;
+    /* thumb oscuro en modo dark */
+}
+
+/* responsive: mostrar la versión desktop únicamente en pantallas grandes */
+.theme-switch--desktop {
+    display: none;
+}
+
+/* versión móvil: dentro del menú */
+.theme-switch--mobile {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Desktop */
+@media screen and (min-width: 769px) {
+    .theme-switch--desktop {
+        display: inline-flex;
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1500;
+    }
+
+    .theme-switch--mobile {
+        display: none !important;
+    }
+}
+
+/* ajustar iconos SVG dentro del switch */
+.theme-switch__icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity 160ms ease, transform 160ms ease;
+    color: currentColor;
+    /* usa color del texto/tema */
+    opacity: 0.35;
+}
+
+/* estados visibles/atenuados */
+.theme-switch[aria-checked="false"] .theme-switch__icon--sun {
+    opacity: 0.25;
+    transform: scale(.92);
+}
+
+.theme-switch[aria-checked="false"] .theme-switch__icon--moon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.theme-switch[aria-checked="true"] .theme-switch__icon--sun {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.theme-switch[aria-checked="true"] .theme-switch__icon--moon {
+    opacity: 0.25;
+    transform: scale(.92);
+}
+
+/* asegurar que SVG herede color */
+.theme-switch__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+/* mantener resto de estilos del switch (track + thumb) igual que antes */
+.theme-switch__track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 52px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px;
+    box-sizing: border-box;
+    position: relative;
+    transition: background-color 180ms ease;
+}
+
+.theme-switch__thumb {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: transform 180ms ease, background-color 180ms ease;
+    transform: translateX(0);
+}
+
+.theme-switch[aria-checked="true"] .theme-switch__thumb {
+    transform: translateX(24px);
+    background: #111;
+}
+
+.theme-switch[aria-checked="true"] .theme-switch__track {
+    background: rgba(217, 139, 43, 0.95);
+}
+
+.theme-switch[aria-checked="false"] .theme-switch__track {
+    background: rgba(255, 255, 255, 0.08);
 }
