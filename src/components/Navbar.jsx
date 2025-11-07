@@ -108,9 +108,10 @@ const Navbar = () => {
                     <li className="nav-item theme-toggle-mobile-wrap">
                         <button
                             className="theme-switch theme-switch--mobile"
-                            role="switch"
+                            aria-hidden="true"
                             aria-checked={theme === 'dark'}
-                            onClick={() => { toggleTheme(); closeMenu(); }}
+                            tabIndex={-1}
+                            onClick={() => { toggleTheme(); }}
                             title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
                         >
                             <span className="theme-switch__track" aria-hidden="true">
@@ -140,7 +141,6 @@ const Navbar = () => {
                                     </svg>
                                 </span>
                             </span>
-                            <span className="sr-only">{theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}</span>
                         </button>
                     </li>
                 </ul>
@@ -148,8 +148,9 @@ const Navbar = () => {
                 {/* toggle desktop: aislado a la derecha */}
                 <button
                     className="theme-switch theme-switch--desktop"
-                    role="switch"
+                    aria-hidden="true"
                     aria-checked={theme === 'dark'}
+                    tabIndex={-1}
                     onClick={toggleTheme}
                     title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
                 >
@@ -178,7 +179,6 @@ const Navbar = () => {
                             </svg>
                         </span>
                     </span>
-                    <span className="sr-only">{theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}</span>
                 </button>
             </div>
         </nav>
