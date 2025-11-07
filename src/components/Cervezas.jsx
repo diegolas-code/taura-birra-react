@@ -1,19 +1,34 @@
-const Cervezas = () => {
+import React from 'react';
+
+const Cervezas = ({ items = [] }) => {
     return (
         <section className="cervezas-section">
             <div className="cervezas-container">
                 <h2>Nuestras cervezas</h2>
-                <p>Commodo cupidatat commodo incididunt laboris adipisicing do dolor ullamco. Adipisicing non enim laboris ipsum Lorem sint Lorem mollit consectetur. Velit aliquip aute dolor do labore magna non occaecat elit eu qui occaecat cillum. Velit consequat laboris aute ad nisi est id dolore deserunt laborum ea. Sint consequat eu irure incididunt labore minim est mollit. Lorem consectetur sit voluptate Lorem minim consectetur velit laboris pariatur commodo voluptate. Aliquip nisi ipsum id consequat irure excepteur labore.</p>
-                <p>
-                    Fusce vitae justo vitae urna faucibus fermentum. Curabitur non tortor eget sapien
-                    vulputate tempor. Integer sit amet lorem euismod, pulvinar arcu a, facilisis nibh.
-                </p>
-                <p>Commodo cupidatat commodo incididunt laboris adipisicing do dolor ullamco. Adipisicing non enim laboris ipsum Lorem sint Lorem mollit consectetur. Velit aliquip aute dolor do labore magna non occaecat elit eu qui occaecat cillum. Velit consequat laboris aute ad nisi est id dolore deserunt laborum ea. Sint consequat eu irure incididunt labore minim est mollit. Lorem consectetur sit voluptate Lorem minim consectetur velit laboris pariatur commodo voluptate. Aliquip nisi ipsum id consequat irure excepteur labore.</p>
-                <p>
-                    Fusce vitae justo vitae urna faucibus fermentum. Curabitur non tortor eget sapien
-                    vulputate tempor. Integer sit amet lorem euismod, pulvinar arcu a, facilisis nibh.
-                </p>
-                <p>Commodo cupidatat commodo incididunt laboris adipisicing do dolor ullamco. Adipisicing non enim laboris ipsum Lorem sint Lorem mollit consectetur. Velit aliquip aute dolor do labore magna non occaecat elit eu qui occaecat cillum. Velit consequat laboris aute ad nisi est id dolore deserunt laborum ea. Sint consequat eu irure incididunt labore minim est mollit. Lorem consectetur sit voluptate Lorem minim consectetur velit laboris pariatur commodo voluptate. Aliquip nisi ipsum id consequat irure excepteur labore.</p>
+
+                <div className="cervezas-grid">
+                    {items.length === 0 ? (
+                        <p>Cargando...</p>
+                    ) : (
+                        items.map((item) => {
+                            // si la ruta en JSON es "./imagen.png" la convertimos a "/imagen.png" para public/
+                            const img = item.imagen ? item.imagen.replace(/^\.\//, '/') : '';
+                            return (
+                                <article
+                                    key={item.id ?? item.nombre}
+                                    className="beer-card"
+                                    style={{ backgroundImage: `url(${img})` }}
+                                    aria-label={item.nombre}
+                                >
+                                    <div className="beer-card__overlay">
+                                        <h3 className="beer-card__title">{item.nombre}</h3>
+                                        <p className="beer-card__desc">{item.descripcion}</p>
+                                    </div>
+                                </article>
+                            );
+                        })
+                    )}
+                </div>
             </div>
         </section>
     );

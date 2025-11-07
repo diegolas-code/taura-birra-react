@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { HashRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -12,6 +12,16 @@ import './App.css'
 import './colors.css'
 
 function App() {
+
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch("/data.json")
+            .then((res) => res.json())
+            .then((data) => setItems(data))
+            .catch((err) => console.error("Error al cargar JSON:", err));
+    }, []);
+
     return (
         <HashRouter>
             <header>
@@ -26,7 +36,8 @@ function App() {
                     <Nosotros />
                 </section>
                 <section id="cervezas">
-                    <Cervezas />
+                    <Cervezas items={items} />
+
                 </section>
                 <section id="bar">
                     <Bar />

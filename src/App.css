@@ -379,15 +379,27 @@ footer#contacto {
     border: 0;
     min-height: 400px;
     filter: grayscale(100%);
-    transition: filter 0.5s ease;
+    transition: filter 0.5s ease; /* default para tema claro */
 }
 
+/* hover normal: quitar grayscale */
 .ubicacion-section iframe:hover {
-    display: block;
-    width: 100%;
-    border: 0;
-    min-height: 400px;
     filter: grayscale(0%);
+}
+
+/* Dark theme: invertir colores del mapa manteniendo el grayscale por defecto
+   y usar una transición más rápida al pasar el mouse */
+:root[data-theme="dark"] .ubicacion-section iframe {
+    /* invertir + hue-rotate para que los colores queden naturales tras invertir;
+       contrast ligero para mejor legibilidad */
+    filter: grayscale(100%) invert(1) hue-rotate(180deg) contrast(0.95);
+    transition: filter 1.2s ease; /* más lento en modo oscuro */
+}
+
+/* Dark theme hover: quitar grayscale pero mantener la inversión */
+:root[data-theme="dark"] .ubicacion-section iframe:hover {
+    filter: invert(1) hue-rotate(180deg) contrast(0.95);
+    transition: filter 1.2s ease;
 }
 
 ul {
@@ -804,4 +816,64 @@ li {
 
 .theme-switch[aria-checked="false"] .theme-switch__track {
     background: rgba(255, 255, 255, 0.08);
+}
+
+/* Grid de tarjetas: 1 columna en móvil, 3 columnas en md+ */
+.cervezas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* 3 columnas en pantallas >= 768px */
+@media screen and (min-width: 768px) {
+    .cervezas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* tarjeta individual */
+.beer-card {
+    min-height: 240px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* efecto hover */
+.beer-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.32);
+}
+
+/* overlay para texto (gradiente) */
+.beer-card__overlay {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.6) 100%);
+    color: var(--color-text);
+}
+
+/* título y descripción */
+.beer-card__title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-heading);
+}
+
+.beer-card__desc {
+    margin: 0.45rem 0 0 0;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    color: var(--color-text);
+    max-height: 5.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

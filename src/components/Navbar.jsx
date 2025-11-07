@@ -109,7 +109,7 @@ const Navbar = () => {
                         <button
                             className="theme-switch theme-switch--mobile"
                             aria-hidden="true"
-                            aria-checked={theme === 'dark'}
+                            aria-checked={theme === 'light'}
                             tabIndex={-1}
                             onClick={() => { toggleTheme(); }}
                             title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
@@ -149,7 +149,7 @@ const Navbar = () => {
                 <button
                     className="theme-switch theme-switch--desktop"
                     aria-hidden="true"
-                    aria-checked={theme === 'dark'}
+                    aria-checked={theme === 'light'}
                     tabIndex={-1}
                     onClick={toggleTheme}
                     title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
