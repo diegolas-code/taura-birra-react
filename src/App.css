@@ -1,0 +1,628 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0rem;
+    text-align: center;
+}
+
+/* .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+} */
+
+/* .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+} */
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+main {
+    padding-top: 70px;
+}
+
+.navbar {
+    background-color: var(--color-navbar-bg);
+    height: 70px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-logo:hover {
+    color: var(--color-text);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--color-text);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1400;
+    box-sizing: border-box;
+}
+
+.menu-toggle .bar {
+    position: absolute;
+    left: 50%;
+    width: 24px;
+    height: 3px;
+    background-color: var(--color-text, #fff);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.menu-toggle .bar:nth-child(1) {
+    transform: translate(-50%, -8px);
+}
+
+.menu-toggle .bar:nth-child(2) {
+    transform: translate(-50%, 0);
+}
+
+.menu-toggle .bar:nth-child(3) {
+    transform: translate(-50%, 8px);
+}
+
+.menu-toggle .bar.open:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu-toggle .bar.open:nth-child(2) {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.menu-toggle .bar.open:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem;
+        min-width: 44px;
+        min-height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1400;
+        position: relative;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background-color: var(--color-text, #fff) !important;
+        margin: 3px 0;
+        transition: transform 0.25s, opacity 0.25s;
+    }
+
+    /* nav-menu ahora se despliega desde la derecha */
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        left: auto;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--color-navbar-bg);
+        width: 100%;
+        text-align: center;
+        transition: right 0.3s ease;
+        padding: 2rem 0;
+        gap: 0;
+        z-index: 1399;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-item {
+        margin: 1.5rem 0;
+    }
+
+    .bar.open:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .bar.open:nth-child(2) {
+        opacity: 0;
+    }
+
+    .bar.open:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .navbar-logo {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .navbar-container {
+        justify-content: center;
+    }
+
+    .nav-menu {
+        margin: 0;
+        justify-content: center;
+    }
+
+    .nav-item {
+        margin: 0 1rem;
+    }
+
+    .footer-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .footer-container>div {
+        flex: 1 1 0;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .footer-container>p {
+        flex-basis: 100%;
+    }
+}
+
+.hero,
+.nosotros-section,
+.cervezas-section,
+.bar-section,
+.ubicacion-section {
+    padding: 1rem 3rem;
+    background-color: var(--color-section-bg);
+    color: var(--color-text);
+}
+
+.nosotros-container,
+.cervezas-container,
+.bar-container,
+.ubicacion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.nosotros-container h2,
+.cervezas-container h2,
+.bar-container h2 {
+    font-size: 2.5rem;
+    color: var(--color-heading);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.nosotros-container p,
+.cervezas-container p,
+.bar-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.ubicacion-section,
+.ubicacion-container {
+    padding: 0;
+    margin: 0;
+}
+
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background-image: url('./assets/images/header.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+    padding: 30px 10px 30px 10px;
+}
+
+@media (max-width: 991.98px) {
+    .hero {
+        height: 300px;
+    }
+}
+
+footer#contacto {
+    position: static;
+    box-sizing: border-box;
+    padding: 1rem 3rem;
+    color: var(--color-text);
+    background: transparent;
+}
+
+/* contenedor interno: sin padding lateral para que su max-width coincida */
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+/* escritorio: dos columnas que comparten exactamente el ancho disponible */
+@media screen and (min-width: 769px) {
+    .footer-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .footer-container>div {
+        flex: 1 1 0;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .footer-container>p {
+        flex-basis: 100%;
+    }
+}
+
+.signature {
+    color: var(--color-text);
+    font-size: 0.8em;
+    padding: 1em 3em;
+    background-color: var(--marron-oscuro);
+    border-radius: 20px;
+}
+
+.ubicacion-section iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    min-height: 400px;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+.ubicacion-section iframe:hover {
+    display: block;
+    width: 100%;
+    border: 0;
+    min-height: 400px;
+    filter: grayscale(0%);
+}
+
+ul {
+    margin: 0;
+    padding: 0 0 1em 0;
+}
+
+li {
+    margin-bottom: 0.5em;
+    list-style: none;
+}
+
+.nombre {
+    font-size: 5em;
+    letter-spacing: 0.1em;
+}
+
+.subtitulo {
+    font-family: "Spartan";
+    display: block;
+    font-size: x-large;
+    font-weight: lighter;
+    letter-spacing: 0.6em;
+    margin-top: 0.5em;
+    text-transform: uppercase;
+}
+
+/* Override específico para el botón hamburguesa (menu-toggle) */
+.navbar .menu-toggle {
+    border: none;
+    /* sin borde por defecto */
+    background: transparent;
+}
+
+/* hover / active: quitar el borde blanco heredado */
+.navbar .menu-toggle:hover,
+.navbar .menu-toggle:active {
+    border-color: transparent;
+    outline: none;
+}
+
+/* focus: mantener indicador accesible pero con color personalizado (ej. ámbar suave) */
+.navbar .menu-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(217, 139, 43, 0.16);
+    /* ajusta color/alpha si quieres otro */
+    border-color: transparent;
+}
+
+/* Opcional — quitar por completo cualquier indicador visual (NO recomendado) */
+/*
+.navbar .menu-toggle:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+*/
+
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #333333;
+  --white: #f5f5f5;
+	--transition: 0.5s ease;
+}
+
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.toggle-wrapper {
+  width: 130px;
+  display: block;
+}
+
+.toggle {
+  height: 65px;
+  width: 130px;
+  background: var(--black);
+  border-radius: 40px;
+  padding: 12px;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+}
+
+
+.toggle::before {
+  content: "";
+  display: block;
+  height: 41px;
+  width: 41px;
+  border-radius: 30px;
+  background: var(--white);
+  position: absolute;
+  z-index: 2;
+  transform: translate(0);
+  transition: transform var(--transition);
+}
+
+.toggle.enabled::before {
+  transform: translateX(65px);
+}
+
+.toggle input {
+	position: absolute;
+	top: 0;
+  opacity: 0;
+}
+
+/* Theme toggle: estilos compartidos */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: inherit;
+    padding: 0.35rem 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 220ms, color 220ms, border-color 220ms;
+}
+
+/* Desktop: mostrar toggle en extremo derecho, enlaces siguen centrados */
+.theme-toggle-desktop {
+    display: none; /* por defecto oculto, se muestra en desktop con media query */
+}
+
+@media screen and (min-width: 769px) {
+    .theme-toggle-mobile { display: none !important; } /* ocultar versión móvil */
+
+    .theme-toggle-desktop {
+        display: inline-flex;
+        position: absolute;
+        right: 1.5rem;        /* separación desde el borde derecho de la navbar */
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1500;
+    }
+
+    /* asegurar que el navbar-container sea referencia para el absolute */
+    .navbar-container { position: relative; }
+}
+
+/* Móvil: toggle dentro del menú (después de los enlaces) */
+.theme-toggle-mobile {
+    display: none; /* visible solo en móvil por la media query siguiente */
+    width: 100%;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    box-sizing: border-box;
+}
+
+/* estilo del wrapper dentro del UL para que ocupe línea completa */
+.theme-toggle-mobile-wrap {
+    display: none; /* se muestra en móvil */
+    width: 100%;
+}
+
+/* comportamiento en móviles: mostrar el toggle dentro del menú, ocultar el desktop */
+@media screen and (max-width: 768px) {
+    .theme-toggle-desktop { display: none !important; }
+
+    .theme-toggle-mobile {
+        display: inline-flex !important;
+    }
+
+    .theme-toggle-mobile-wrap {
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    /* asegurar que el botón dentro del menú tenga buen contraste y tamaño */
+    .theme-toggle-mobile {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.06);
+        color: var(--color-text);
+        border-radius: 8px;
+    }
+}
+
+/* hacer que el toggle visualmente coincida con el botón hamburguesa */
+.theme-toggle,
+.theme-toggle-mobile {
+    background: transparent;
+    border: none;               /* igual que .menu-toggle */
+    color: inherit;
+    padding: 0.35rem 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* hover/active: sin borde blanco */
+.theme-toggle:hover,
+.theme-toggle:active,
+.theme-toggle-mobile:hover,
+.theme-toggle-mobile:active {
+    border-color: transparent;
+    outline: none;
+}
+
+/* foco: misma sombra accesible que .menu-toggle:focus */
+.theme-toggle:focus,
+.theme-toggle-mobile:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(217, 139, 43, 0.16);
+    border-color: transparent;
+}
