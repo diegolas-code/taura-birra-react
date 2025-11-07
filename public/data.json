@@ -9,7 +9,7 @@
                 "Copa Platense de Cervezas Artesanales (Diciembre 2021)"
             ]
         },
-        "imagen": "./cerveza-dorada-pampeana.png"
+        "imagen": "./images/cerveza-dorada-pampeana.png"
     },
     {
         "id": 2,
@@ -23,7 +23,7 @@
                 "Copa Austral (Mayo 2024)"
             ]
         },
-        "imagen": "./cerveza-ginger-ale.png"
+        "imagen": "./images/cerveza-ginger-ale.png"
     },
     
     {
@@ -33,7 +33,7 @@
         "extras": {
             
         },
-        "imagen": "./cerveza-ipa.png"
+        "imagen": "./images/cerveza-ipa.png"
     },
     
     {
@@ -43,7 +43,7 @@
         "extras": {
             
         },
-        "imagen": "./cerveza-ira.png"
+        "imagen": "./images/cerveza-ira.png"
     },
     
     {
@@ -53,6 +53,6 @@
         "extras": {
             
         },
-        "imagen": "./cerveza-stout.png"
+        "imagen": "./images/cerveza-stout.png"
     }
 ]
