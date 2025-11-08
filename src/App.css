@@ -83,10 +83,17 @@ main {
 .nav-link {
     color: var(--color-text);
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 450;
     transition: color 0.3s;
     position: relative;
+}
+
+@media (max-width: 800px) {
+    .nav-link {
+        font-size: 1em;
+    }
+
 }
 
 .nav-link:hover {
@@ -99,9 +106,10 @@ main {
     bottom: -5px;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 1.5px;
     background-color: var(--color-text);
-    transition: width 0.3s;
+    opacity: 50%;
+    transition: width 0.2s;
 }
 
 .nav-link:hover::after {
@@ -260,15 +268,23 @@ main {
     }
 }
 
+
 .hero,
 .nosotros-section,
 .cervezas-section,
 .bar-section,
 .ubicacion-section {
-    padding: 1rem 3rem;
-    background-color: var(--color-section-bg);
+
+    padding: 1rem 3.5rem;
+    background-color: var(--color-second-bg);
     color: var(--color-text);
 }
+
+.hero {
+    padding: 0;
+}
+
+
 
 .nosotros-container,
 .cervezas-container,
@@ -276,25 +292,37 @@ main {
 .ubicacion-container {
     max-width: 1200px;
     margin: 0 auto;
+
 }
 
+.cervezas-section {
+    background-color: var(--color-first-bg);
+    margin-bottom: 2em;
+}
 
 .nosotros-container h2,
 .cervezas-container h2,
 .bar-container h2 {
-    font-size: 2.5rem;
-    color: var(--color-heading);
-    margin-bottom: 2rem;
+    font-size: 2.75rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    margin-top: 0rem;
     text-align: center;
+}
+
+h3 {
+    text-align: left;
+    padding-top: 0;
 }
 
 .nosotros-container p,
 .cervezas-container p,
 .bar-container p {
-    font-size: 1.1rem;
+    font-size: .95rem;
+    font-weight: 450;
     line-height: 1.8;
     color: var(--color-text);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: justify;
 }
 
@@ -316,12 +344,12 @@ main {
     background-repeat: no-repeat;
     text-align: center;
     color: white;
-    padding: 30px 10px 30px 10px;
+    /* padding: 30px 10px 30px 10px; */
 }
 
 @media (max-width: 991.98px) {
     .hero {
-        height: 300px;
+        height: 270px;
     }
 }
 
@@ -343,6 +371,8 @@ footer#contacto {
     flex-direction: column;
     gap: 1.5rem;
     text-align: left;
+    font-weight: 450;
+    margin-top: 1.5em;
 }
 
 /* escritorio: dos columnas que comparten exactamente el ancho disponible */
@@ -366,10 +396,12 @@ footer#contacto {
 }
 
 .signature {
+    display: inline-block;
     color: var(--color-text);
-    font-size: 0.8em;
+    font-size: 0.85em;
     padding: 1em 3em;
-    background-color: var(--marron-oscuro);
+    background-color: var(--color-second-bg);
+    margin-top: 1.5em;
     border-radius: 20px;
 }
 
@@ -379,7 +411,8 @@ footer#contacto {
     border: 0;
     min-height: 400px;
     filter: grayscale(100%);
-    transition: filter 0.5s ease; /* default para tema claro */
+    transition: filter 0.5s ease;
+    /* default para tema claro */
 }
 
 /* hover normal: quitar grayscale */
@@ -393,7 +426,8 @@ footer#contacto {
     /* invertir + hue-rotate para que los colores queden naturales tras invertir;
        contrast ligero para mejor legibilidad */
     filter: grayscale(100%) invert(1) hue-rotate(180deg) contrast(0.95);
-    transition: filter 1.2s ease; /* más lento en modo oscuro */
+    transition: filter 1.2s ease;
+    /* más lento en modo oscuro */
 }
 
 /* Dark theme hover: quitar grayscale pero mantener la inversión */
@@ -413,8 +447,9 @@ li {
 }
 
 .nombre {
-    font-size: 5em;
+    font-size: 6.5em;
     letter-spacing: 0.1em;
+    padding: 0;
 }
 
 .subtitulo {
@@ -427,7 +462,9 @@ li {
     text-transform: uppercase;
 }
 
+
 /* Override específico para el botón hamburguesa (menu-toggle) */
+
 .navbar .menu-toggle {
     border: none;
     /* sin borde por defecto */
@@ -839,9 +876,10 @@ li {
     border-radius: 12px;
     overflow: hidden;
     display: block;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
-    background: transparent; /* ya no usamos background-image */
+    background: transparent;
+    /* ya no usamos background-image */
 }
 
 /* imagen que marca la altura real de la tarjeta */
@@ -860,7 +898,7 @@ li {
     right: 0;
     bottom: 0;
     padding: 1rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.6) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.6) 100%);
     color: var(--color-text);
     box-sizing: border-box;
 }
@@ -868,7 +906,7 @@ li {
 /* mantener hover/efecto */
 .beer-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.32);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
 }
 
 /* títulos y descripciones permanecen igual */
@@ -886,4 +924,47 @@ li {
     max-height: 5.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+label,
+input,
+textarea,
+button {
+    display: block;
+}
+
+input,
+textarea {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+textarea {
+    height: 8em;
+}
+
+label {
+    margin-top: 1.5em;
+}
+
+.flat-input {
+    border-radius: 5px;
+    box-shadow: none;
+    outline: none;
+    padding: 0.25em;
+    background-color: var(--color-second-bg);
+    appearance: none;
+}
+
+.btn-brn {
+    background-color: #5c3b23;
+    color: var(--color-first-bg);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin-top: 1em;
+}
+
+.btn-brn:hover {
+    background-color: #805232;
 }

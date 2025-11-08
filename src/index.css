@@ -28,15 +28,17 @@ body {
     margin: 0;
     display: flex;
     place-items: center;
+    letter-spacing: 0.05em;
     min-width: 320px;
     min-height: 100vh;
-    background-color: var(--color-body-bg);
+    background-color: var(--color-first-bg);
     font-family: 'Spartan', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.9em;
 }
 
 h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
+    /* font-size:xx-large; */
+    line-height: 1.2;
     color: white;
 }
 
@@ -48,11 +50,25 @@ h4,
 h5,
 h6 {
     font-family: 'Hudson NY Serif', Georgia, "Times New Roman", serif;
+    letter-spacing: 0.05em;
+
 }
+
+h3 {
+    font-size: 1.6em;
+    margin-bottom: 0.7em;
+    margin-top: 0;
+    /* padding-top: 0; */
+}
+
+
+
+
 
 @media (max-width: 991.98px) {
     h1 .nombre {
-        font-size: 3.5em;
+        /* margin-top: 0; */
+        font-size: 4.5em;
         letter-spacing: 0.1em;
     }
 
@@ -62,15 +78,35 @@ h6 {
     }
 }
 
+
+
 @media (max-width: 600px) {
     h1 .nombre {
-        font-size: 2.8em;
+        font-size: 4em;
         letter-spacing: 0.1em;
     }
 
     h1 .subtitulo {
         font-size: medium;
         letter-spacing: 0.6em;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    /* html {
+        font-size: smaller;
+    } */
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: smaller;
     }
 }
 

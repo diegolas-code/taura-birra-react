@@ -89,7 +89,7 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                         <HashLink to="/#cervezas" className="nav-link" onClick={closeMenu} scroll={el => scrollWithOffset(el)}>
-                            Cervezas
+                            Nuestras Cervezas
                         </HashLink>
                     </li>
                     <li className="nav-item">

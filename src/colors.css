@@ -1,37 +1,6 @@
-:root {    
-    --trigo-claro: #F5E6B3;
-    --color-text: #F5E6B3;
-    --arena-tostada: #E0C88A;
-    --arena-quemada: #B8955C;
-    
-    --marron-oscuro: #4B3621;
-    --color-navbar-bg: #4B3621;
-
-    --cafe-medio: #6B4F32;
-
-    --dorado-intenso: #CFA13F;
-    --color-link: #CFA13F;
-
-    --miel: #E8B75F;
-    --color-heading: #E8B75F;
-
-    --cacao-amargo: #241B14;
-    --color-body-bg: #241B14;
-
-    --chocolate-profundo: #3A2618;
-    --color-section-bg: #3A2618;
-    --color-section-bg: #F1E0B3;
-    
-    --color-link-hover: #B84C24;
-    --color-link-visited: #A77E3E;
-    
-    --color-highlight-1: #FFD166;
-    --color-highlight-2: #9BC53D;
-}
-
 :root[data-theme="light"] {
-    --color-body-bg: #FAF3DC;
-    --color-section-bg: #F1E0B3;
+    --color-first-bg: #FAF3DC;
+    --color-second-bg: #F1E0B3;
     --color-navbar-bg: #D7B77A;
 
     --color-text: #3A2618;
@@ -46,18 +15,18 @@
 }
 
 :root[data-theme="dark"] {
-    --color-body-bg: #241B14;
-    --color-section-bg: #3A2618;
+    --color-first-bg: #241B14;
+    --color-second-bg: #3A2618;
     --color-navbar-bg: #4B3621;
-    
+
     --color-text: #F5E6B3;
     --color-heading: #E8B75F;
-    
+
     --color-link: #CFA13F;
     --color-link-hover: #B84C24;
     --color-link-visited: #A77E3E;
-    
+
     --color-highlight-1: #FFD166;
     --color-highlight-2: #9BC53D;
-    
+
 }
