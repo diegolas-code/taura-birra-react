@@ -7,6 +7,7 @@ import Cervezas from './components/Cervezas'
 import Bar from './components/Bar'
 import Ubicacion from './components/Ubicacion'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 import './App.css'
 import './colors.css'
@@ -47,6 +48,11 @@ function App() {
             </main>
 
             <Footer />
+
+            <WhatsAppButton 
+                phoneNumber="5491234567890"
+                companyName="Taura Cerveza Artesanal"
+            />
 
         </HashRouter>
     )
