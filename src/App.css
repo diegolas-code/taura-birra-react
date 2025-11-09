@@ -5,30 +5,6 @@
     text-align: center;
 }
 
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
-}
-
-.card {
-    padding: 2em;
-}
-
-.read-the-docs {
-    color: #888;
-}
-
 main {
     padding-top: 70px;
 }
@@ -83,7 +59,7 @@ main {
 .nav-link {
     color: var(--color-text);
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 450;
     transition: color 0.3s;
     position: relative;
@@ -191,7 +167,6 @@ main {
         transition: transform 0.25s, opacity 0.25s;
     }
 
-    /* nav-menu ahora se despliega desde la derecha */
     .nav-menu {
         position: fixed;
         right: -100%;
@@ -349,7 +324,7 @@ h3 {
 
 @media (max-width: 991.98px) {
     .hero {
-        height: 270px;
+        height: 300px;
     }
 }
 
@@ -395,14 +370,27 @@ footer#contacto {
     }
 }
 
+
+
 .signature {
     display: inline-block;
     color: var(--color-text);
     font-size: 0.85em;
-    padding: 1em 3em;
+    padding: 1em 3em .7em 3em;
     background-color: var(--color-second-bg);
     margin-top: 1.5em;
     border-radius: 20px;
+}
+
+.bar-section {
+    border-radius: 20px 20px 0 0;
+    /* solo esquinas inferiores redondeadas */
+}
+
+.ubicacion-section,
+.nosotros-section {
+    border-radius: 0 0 20px 20px;
+    /* solo esquinas inferiores redondeadas */
 }
 
 .ubicacion-section iframe {
@@ -411,8 +399,9 @@ footer#contacto {
     border: 0;
     min-height: 400px;
     filter: grayscale(100%);
-    transition: filter 0.5s ease;
-    /* default para tema claro */
+    transition: filter .5s ease;
+    border-radius: 0 0 20px 20px;
+    /* solo esquinas inferiores redondeadas */
 }
 
 /* hover normal: quitar grayscale */
@@ -622,6 +611,10 @@ li {
 @media screen and (max-width: 768px) {
     .theme-toggle-desktop {
         display: none !important;
+    }
+
+    .hero {
+        height: 250px;
     }
 
     .theme-toggle-mobile {
@@ -855,18 +848,52 @@ li {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Grid de tarjetas: 1 columna en móvil, 3 columnas en md+ */
+/* Grid de tarjetas: usar flex para que cada fila se centre independientemente */
 .cervezas-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin: 0;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+    transition: gap 220ms ease, padding 220ms ease;
 }
 
-/* 3 columnas en pantallas >= 768px */
-@media screen and (min-width: 768px) {
-    .cervezas-grid {
-        grid-template-columns: repeat(3, 1fr);
+/* cada tarjeta ocupa hasta 320px y puede reducirse; esto permite 3 por fila en pantallas grandes */
+.cervezas-grid .beer-card {
+    flex: 1 1 370px;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 1.25em;
+
+    /* Transiciones para que el movimiento sea suave al cambiar de posición */
+    transition: transform 220ms cubic-bezier(.2, .9, .2, 1),
+        box-shadow 180ms ease,
+        filter 220ms ease,
+        margin 220ms ease;
+    will-change: transform, margin;
+}
+
+/* Hover: elevar ligeramente y dar un pequeño scale (no provoca reflow) */
+.beer-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: grayscale(0%);
+    border-color: #a78476;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+}
+
+/* Hacer que el resto de tarjetas aplique su propia transición cuando una card está en hover,
+   esto suaviza el efecto visual cuando la posición de las tarjetas cambia */
+.cervezas-grid:hover .beer-card:not(:hover) {
+    transition: transform 220ms cubic-bezier(.2, .9, .2, 1), margin 220ms ease;
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 767px) {
+    .cervezas-grid .beer-card {
+        flex: 1 1 100%;
     }
 }
 
@@ -879,8 +906,19 @@ li {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
     background: transparent;
+    filter: grayscale(0%);
+    transition: filter 0.5s ease, border-color 0.5s ease;
+    border-color: #b6a199;
+
     /* ya no usamos background-image */
+    /* width/max-width ahora controlados por .cervezas-grid .beer-card */
 }
+
+.beer-card:hover {
+    filter: grayscale(70%);
+    border-color: #a78476;
+}
+
 
 /* imagen que marca la altura real de la tarjeta */
 .beer-card__img {
@@ -891,16 +929,16 @@ li {
     /* vertical-align: middle; */
 }
 
-/* overlay absoluto sobre la imagen */
 .beer-card__overlay {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 1rem;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.6) 100%);
-    color: var(--color-text);
     box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 100%);
+    color: var(--color-text);
 }
 
 /* mantener hover/efecto */
@@ -909,34 +947,72 @@ li {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
 }
 
-/* títulos y descripciones permanecen igual */
+
 .beer-card__title {
     margin: 0;
-    font-size: 1.1rem;
-    color: var(--color-heading);
+    font-size: 1.6rem;
+    font-weight: 600;
+    /* color: var(--color-first-bg); */
+    color: white;
+    text-align: right;
+    align-self: flex-end;
+    /* background: rgba(0, 0, 0, 0.4); */
+    padding: 0em 0.6em;
+    border-radius: 6px;
 }
 
-.beer-card__desc {
+/* .beer-card__desc {
     margin: 0.45rem 0 0 0;
-    font-size: 0.95rem;
+
     line-height: 1.3;
     color: var(--color-text);
-    max-height: 5.5rem;
+
     overflow: hidden;
     text-overflow: ellipsis;
+} */
+
+.beer-card .beer-card__desc {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    text-align: left;
+    align-self: flex-start;
+    background: rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    padding: 0.4em 0.6em;
+    border-radius: 6px;
+    color: white;
+
+    /* Transición suave */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease, transform 300ms ease;
+    transform: translateY(8px);
+    /* opcional: efecto de deslizamiento */
 }
+
+.beer-card:hover .beer-card__desc {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
 
 label,
 input,
 textarea,
 button {
     display: block;
+    
 }
 
 input,
 textarea {
     width: 100%;
-    margin-top: 0.5em;
+    margin-top: .5em;
+    font-family: inherit; /* hereda la fuente del body */
+    font-size: inherit; /* hereda el tamaño del body */
+    color: var(--color-text);
 }
 
 textarea {
@@ -949,22 +1025,39 @@ label {
 
 .flat-input {
     border-radius: 5px;
-    box-shadow: none;
+    padding: .5em;
+    font-size: smaller;
+    background-color: var(--color-text-field);
+    border: none;
     outline: none;
-    padding: 0.25em;
-    background-color: var(--color-second-bg);
-    appearance: none;
+    box-shadow: none;
+    font-family: inherit; /* asegura consistencia */
+    font-size: .9rem; /* o el tamaño que prefieras */
+}
+
+/* opcional: si querés mantener un indicador visual al hacer focus */
+.flat-input:focus {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
 }
 
 .btn-brn {
-    background-color: #5c3b23;
-    color: var(--color-first-bg);
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-weight: 600;
     border: none;
     border-radius: 6px;
-    padding: 0.5rem 1rem;
+    padding: .75rem 1rem;
     margin-top: 1em;
 }
 
 .btn-brn:hover {
-    background-color: #805232;
+    background-color: var(--btn-hover-bg);
+}
+
+.btn-brn:active {
+    background-color: var(--btn-active-bg);
+    border: none;
+    outline: none;
+    
 }

@@ -2,8 +2,9 @@
     --color-first-bg: #FAF3DC;
     --color-second-bg: #F1E0B3;
     --color-navbar-bg: #D7B77A;
+    /* --color-navbar-bg: #F1E0B3; */
 
-    --color-text: #3A2618;
+    --color-text: #5b3d28;
     --color-heading: #5A3B26;
 
     --color-link: #CFA13F;
@@ -12,6 +13,14 @@
 
     --color-highlight-1: #E8B75F;
     --color-highlight-2: #8BAE3D;
+
+    --color-text-field: #F1E0B3;
+
+    --btn-text: white;          /* texto: marfil casi blanco */
+--btn-bg: #cdae74;            /* botón normal: marrón dorado sobrio */
+--btn-hover-bg: #bfa26d;      /* hover: dorado medio */
+--btn-active-bg: #a58d5a;     /* presionado: marrón oscuro profundo */
+
 }
 
 :root[data-theme="dark"] {
@@ -28,5 +37,13 @@
 
     --color-highlight-1: #FFD166;
     --color-highlight-2: #9BC53D;
+
+    --color-text-field: #4B3621;
+
+    --btn-text: #F5E6B3;          /* texto: color de tu esquema actual */
+--btn-bg: #704e2a;            /* botón normal: marrón oliva medio */
+--btn-hover-bg: #634525;      /* hover: verde seco brillante (ya presente en el tema) */
+--btn-active-bg: #47331d;     /* presionado: marrón oscuro terroso */
+
 
 }
