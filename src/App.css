@@ -1044,10 +1044,10 @@ label {
 .btn-brn {
     background-color: var(--btn-bg);
     color: var(--btn-text);
-    font-weight: 600;
+    font-weight: 700;
     border: none;
     border-radius: 6px;
-    padding: .75rem 1rem;
+    padding: 1rem 1rem .75rem 1rem;
     margin-top: 1em;
 }
 

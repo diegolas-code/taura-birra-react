@@ -17,9 +17,9 @@
     --color-text-field: #F1E0B3;
 
     --btn-text: white;          /* texto: marfil casi blanco */
---btn-bg: #cdae74;            /* botón normal: marrón dorado sobrio */
+--btn-bg: #cba969;            /* botón normal: marrón dorado sobrio */
 --btn-hover-bg: #bfa26d;      /* hover: dorado medio */
---btn-active-bg: #a58d5a;     /* presionado: marrón oscuro profundo */
+--btn-active-bg: #D7B77A;     /* presionado: marrón oscuro profundo */
 
 }
 

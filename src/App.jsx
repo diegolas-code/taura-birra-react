@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react'
 import { HashRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
@@ -8,6 +7,7 @@ import Cervezas from './components/Cervezas'
 import Bar from './components/Bar'
 import Ubicacion from './components/Ubicacion'
 import Footer from './components/Footer'
+
 import './App.css'
 import './colors.css'
 
@@ -37,7 +37,6 @@ function App() {
                 </section>
                 <section id="cervezas">
                     <Cervezas items={items} />
-
                 </section>
                 <section id="bar">
                     <Bar />
@@ -48,6 +47,7 @@ function App() {
             </main>
 
             <Footer />
+
         </HashRouter>
     )
 }
