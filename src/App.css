@@ -384,7 +384,56 @@ footer#contacto {
 
 .bar-section {
     border-radius: 20px 20px 0 0;
-    /* solo esquinas inferiores redondeadas */
+    background-image: url('./assets/images/bar-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    filter: saturate(100%);
+    transition: filter 0.5s ease;
+}
+
+.bar-section:hover {
+    filter: saturate(30%);
+}
+
+.bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.bar-container h2 {
+    color: white;
+    text-shadow:
+        -2px -2px 0 rgba(0, 0, 0, 0.11),
+        2px -2px 0 rgba(0, 0, 0, 0.11),
+        -2px 2px 0 rgba(0, 0, 0, 0.11),
+        2px 2px 0 rgba(0, 0, 0, 0.11);
+}
+
+.bar-container p {
+    color: white;
+    background-color: transparent;
+    border-radius: 0.35em;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+    width: 75%;
+    margin: 0;
+}
+
+.bar-section:hover .bar-container p {
+    background-color: rgba(0, 0, 0, 0.521);
+}
+
+.bar-container p small {
+    display: block;
+    margin-top: 1em;
 }
 
 .ubicacion-section,
@@ -1060,4 +1109,11 @@ label {
     border: none;
     outline: none;
     
+}
+
+.bar-container h2,
+.bar-container p {
+    color: white;
+    text-align: left;
+    padding: .5rem .5rem;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import BeerCard from './BeerCard';
+import BeerStatsTable from './BeerStatsTable';
 
 const Cervezas = ({ items = [] }) => {
     return (
@@ -16,6 +17,8 @@ const Cervezas = ({ items = [] }) => {
                         ))
                     )}
                 </div>
+
+                <BeerStatsTable items={items} />
             </div>
         </section>
     );

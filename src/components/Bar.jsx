@@ -2,19 +2,12 @@ const Bar = () => {
     return (
         <section className="bar-section">
             <div className="bar-container">
-                <h2>Bar Section</h2>
+                <h2>Bar de Fábrica</h2>
 
                 <p>
-                    Commodo cupidatat commodo incididunt laboris adipisicing do dolor ullamco. Adipisicing non enim laboris ipsum Lorem sint Lorem mollit consectetur. Velit aliquip aute dolor do labore magna non occaecat elit eu qui occaecat cillum. Velit consequat laboris aute ad nisi est id dolore deserunt laborum ea. Sint consequat eu irure incididunt labore minim est mollit. Lorem consectetur sit voluptate Lorem minim consectetur velit laboris pariatur commodo voluptate. Aliquip nisi ipsum id consequat irure excepteur labore.</p>
-                <p>
-                    Fusce vitae justo vitae urna faucibus fermentum. Curabitur non tortor eget sapien
-                    vulputate tempor. Integer sit amet lorem euismod, pulvinar arcu a, facilisis nibh.
-                </p>
-                <p>
-                    Commodo cupidatat commodo incididunt laboris adipisicing do dolor ullamco. Adipisicing non enim laboris ipsum Lorem sint Lorem mollit consectetur. Velit aliquip aute dolor do labore magna non occaecat elit eu qui occaecat cillum. Velit consequat laboris aute ad nisi est id dolore deserunt laborum ea. Sint consequat eu irure incididunt labore minim est mollit. Lorem consectetur sit voluptate Lorem minim consectetur velit laboris pariatur commodo voluptate. Aliquip nisi ipsum id consequat irure excepteur labore.</p>
-                <p>
-                    Fusce vitae justo vitae urna faucibus fermentum. Curabitur non tortor eget sapien
-                    vulputate tempor. Integer sit amet lorem euismod, pulvinar arcu a, facilisis nibh.
+                    Los sábados, de 20:30 a 02:00, abrimos las puertas de nuestro Bar de Fábrica para que disfrutes una experiencia cervecera auténtica. Podés venir a probar todos nuestros estilos clásicos, junto con algunos experimentos exclusivos y sorpresas que solo servimos en el bar. Todo acompañado de comida casera hecha al momento, con opciones para todos los gustos, en un ambiente relajado, cálido y rodeado de buena música y buena gente.
+                    <br /><br />
+                    <small>(Solo con reserva previa)</small>
                 </p>
             </div>
         </section>
