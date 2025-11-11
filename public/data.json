@@ -34,7 +34,7 @@
     },
     
     {
-        "id": 2,
+        "id": 3,
         "nombre": "IPA (Indian Pale Ale)",
         "descripcion": "Cerveza ámbar con alto amargor. Fuerte presencia de lúpulo con aromas cítricos y resinosos. Intensa y aromática.",
         "premios": {
@@ -48,7 +48,7 @@
     },
     
     {
-        "id": 2,
+        "id": 4,
         "nombre": "IRA (Irish Red Ale)",
         "descripcion": "Es una cerveza dulce, con marcado sabor a maltas tostadas y caramelo. De color rojizo intenso, en el que destaca un sabor intenso de la malta y un aroma frutado.",
         "premios": {
@@ -62,7 +62,7 @@
     },
     
     {
-        "id": 2,
+        "id": 5,
         "nombre": "Stout",
         "descripcion": "Cerveza de color oscuro, con amargor medio y una textura suave en boca. Presenta notas de café y cacao, logrando un perfil intenso pero fácil de disfrutar.",
         "premios": {

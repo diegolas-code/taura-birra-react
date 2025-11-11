@@ -1,12 +1,14 @@
 .cervezas-table-wrapper {
-    margin: 2.5rem auto 0;
+    margin: 2.5rem auto 2.5rem auto;
     max-width: 840px;
     overflow-x: auto;
+    
 }
 
 .beer-stats-table {
     width: 100%;
     border-collapse: collapse;
+    
 }
 
 .beer-stats-table th,

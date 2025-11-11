@@ -12,6 +12,8 @@ const Nosotros = () => {
 
                 <p>Brindamos con lo que somos: dedicación hecha sabor.</p>
             </div>
+
+            <div className="separator"></div>
         </section>
     );
 };

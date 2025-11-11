@@ -5,7 +5,7 @@
     /* --color-navbar-bg: #F1E0B3; */
 
     --color-text: #5b3d28;
-    --color-heading: #5A3B26;
+    --color-heading: #a66437;
 
     --color-link: #CFA13F;
     --color-link-hover: #B65C23;
@@ -26,10 +26,10 @@
 :root[data-theme="dark"] {
     --color-first-bg: #241B14;
     --color-second-bg: #3A2618;
-    --color-navbar-bg: #4B3621;
+    --color-navbar-bg: #533c25;
 
     --color-text: #F5E6B3;
-    --color-heading: #E8B75F;
+    --color-heading: #ddb975;
 
     --color-link: #CFA13F;
     --color-link-hover: #B84C24;

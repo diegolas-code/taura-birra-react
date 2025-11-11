@@ -19,6 +19,8 @@ const Cervezas = ({ items = [] }) => {
                 </div>
 
                 <BeerStatsTable items={items} />
+
+                <div className="separator"></div>
             </div>
         </section>
     );

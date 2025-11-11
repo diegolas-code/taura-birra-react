@@ -1,6 +1,37 @@
+import { useEffect, useRef } from 'react';
+
 const Bar = () => {
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        if (!section) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        section.classList.add('in-view');
+                    } else {
+                        section.classList.remove('in-view');
+                    }
+                });
+            },
+            {
+                threshold: 0.3, // cambiar de 100 a 0.5 (50% de visibilidad)
+                rootMargin: '-25% 0px -25% 0px' // Detecta cuando está en el centro vertical
+            }
+        );
+
+        observer.observe(section);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
     return (
-        <section className="bar-section">
+        <section ref={sectionRef} className="bar-section">
             <div className="bar-container">
                 <h2>Bar de Fábrica</h2>
 

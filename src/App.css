@@ -288,6 +288,7 @@ main {
 h3 {
     text-align: left;
     padding-top: 0;
+    font-size: 1.85em;
 }
 
 .nosotros-container p,
@@ -389,8 +390,9 @@ footer#contacto {
     background-position: center;
     background-repeat: no-repeat;
     min-height: 450px;
+    padding: 0;  /* Eliminar padding de la sección */
     display: flex;
-    align-items: center;
+    align-items: flex-start;  /* Cambiar de center a flex-start */
     filter: saturate(100%);
     transition: filter 0.5s ease;
 }
@@ -401,10 +403,13 @@ footer#contacto {
 
 .bar-container {
     max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
+    padding: 1.5rem 2rem;  /* Reducir padding considerablemente */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: flex-start;
     height: 100%;
 }
 
@@ -415,25 +420,39 @@ footer#contacto {
         2px -2px 0 rgba(0, 0, 0, 0.11),
         -2px 2px 0 rgba(0, 0, 0, 0.11),
         2px 2px 0 rgba(0, 0, 0, 0.11);
+    margin-top: 0;
+    margin-bottom: 0.5rem;  /* Reducir margen inferior */
+    text-align: left;
+    padding: 1rem;
 }
 
 .bar-container p {
     color: white;
+    font-size: 1em;
     background-color: transparent;
-    border-radius: 0.35em;
-    padding: 0.5rem;
-    transition: background-color 0.3s ease;
+    border-radius: 1em;
+    padding: 1rem;
     width: 75%;
     margin: 0;
+    text-align: left;
+    opacity: 0%;
+    transition: opacity 0.8s ease, background-color 0.8s ease; /* agregar esta línea */
 }
 
-.bar-section:hover .bar-container p {
+
+/* .bar-section:hover .bar-container p {
     background-color: rgba(0, 0, 0, 0.521);
+    opacity: 100%;
+} */
+
+/* Reemplazar el hover por la clase in-view */
+.bar-section.in-view {
+    filter: saturate(30%);
 }
 
-.bar-container p small {
-    display: block;
-    margin-top: 1em;
+.bar-section.in-view .bar-container p {
+    background-color: rgba(0, 0, 0, 0.65);
+    opacity: 100%;
 }
 
 .ubicacion-section,
@@ -755,33 +774,36 @@ li {
     width: 44px;
     height: 24px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--color-first-bg);
     padding: 3px;
     box-sizing: border-box;
     transition: background-color 180ms ease;
 }
 
 .theme-switch__thumb {
-    display: block;
-    width: 18px;
-    height: 18px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #fff;
-    transform: translateX(0);
-    transition: transform 180ms ease, background-color 180ms ease;
+    background: var(--color-text);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* estado "checked" (dark) -> desplazar thumb a la derecha y cambiar colores */
-.theme-switch[aria-checked="true"] .theme-switch__track {
-    background: rgba(217, 139, 43, 0.95);
-    /* ejemplo ámbar; usa tu variable si querés */
+    transition: transform 180ms ease, background-color 180ms ease;
+    transform: translateX(0);
 }
 
 .theme-switch[aria-checked="true"] .theme-switch__thumb {
-    transform: translateX(20px);
-    background: #1f1f1f;
-    /* thumb oscuro en modo dark */
+    transform: translateX(24px);
+    background: var(--color-text);
+}
+
+.theme-switch[aria-checked="true"] .theme-switch__track {
+    background: var(--color-first-bg);
+}
+
+.theme-switch[aria-checked="false"] .theme-switch__track {
+    background: var(--color-first-bg);
 }
 
 /* responsive: mostrar la versión desktop únicamente en pantallas grandes */
@@ -821,8 +843,7 @@ li {
     justify-content: center;
     pointer-events: none;
     transition: opacity 160ms ease, transform 160ms ease;
-    color: currentColor;
-    /* usa color del texto/tema */
+    color: var(--color-text);
     opacity: 0.35;
 }
 
@@ -852,8 +873,8 @@ li {
     width: 100%;
     height: 100%;
     display: block;
-    fill: currentColor;
-    stroke: currentColor;
+    fill: var(--color-text);
+    stroke: var(--color-text);
 }
 
 /* mantener resto de estilos del switch (track + thumb) igual que antes */
@@ -864,7 +885,7 @@ li {
     width: 52px;
     height: 28px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-first-bg);
     padding: 4px;
     box-sizing: border-box;
     position: relative;
@@ -878,7 +899,7 @@ li {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--color-text);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     transition: transform 180ms ease, background-color 180ms ease;
     transform: translateX(0);
@@ -886,15 +907,15 @@ li {
 
 .theme-switch[aria-checked="true"] .theme-switch__thumb {
     transform: translateX(24px);
-    background: #111;
+    background: var(--color-text);
 }
 
 .theme-switch[aria-checked="true"] .theme-switch__track {
-    background: rgba(217, 139, 43, 0.95);
+    background: var(--color-first-bg);
 }
 
 .theme-switch[aria-checked="false"] .theme-switch__track {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-first-bg);
 }
 
 /* Grid de tarjetas: usar flex para que cada fila se centre independientemente */
@@ -983,7 +1004,7 @@ li {
     inset: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end; /* cambiar de space-between a flex-end */
     padding: 1rem;
     box-sizing: border-box;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 100%);
@@ -998,14 +1019,12 @@ li {
 
 
 .beer-card__title {
-    margin: 0;
+    margin: 0 0 auto 0; /* el margin-bottom: auto empuja el resto hacia abajo */
     font-size: 1.6rem;
     font-weight: 600;
-    /* color: var(--color-first-bg); */
     color: white;
     text-align: right;
     align-self: flex-end;
-    /* background: rgba(0, 0, 0, 0.4); */
     padding: 0em 0.6em;
     border-radius: 6px;
 }
@@ -1021,8 +1040,8 @@ li {
 } */
 
 .beer-card .beer-card__desc {
-    margin: 0;
-    font-size: 0.85rem;
+    margin: 0 0 0.5rem 0; /* agregar margen inferior pequeño */
+    font-size: 0.9rem;
     line-height: 1.3;
     text-align: left;
     align-self: flex-start;
@@ -1032,7 +1051,6 @@ li {
     border-radius: 6px;
     color: white;
 
-    /* Transición suave */
     opacity: 0;
     pointer-events: none;
     transition: opacity 300ms ease, transform 300ms ease;
@@ -1046,6 +1064,43 @@ li {
     transform: translateY(0);
 }
 
+
+/* Estilos para las medallas - mismo efecto que la descripción */
+.beer-card__medals {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    text-align: left;
+    align-self: flex-start;
+    background: rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    padding: 0.4em 0.6em;
+    border-radius: 6px;
+    color: white;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease, transform 300ms ease;
+    transform: translateY(8px);
+}
+
+.beer-card:hover .beer-card__medals {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.medal-group {
+    margin-bottom: 0.5rem;
+}
+
+.medal-group:last-child {
+    margin-bottom: 0;
+}
+
+.medal-group strong {
+    font-weight: 600;
+}
 
 label,
 input,
@@ -1111,9 +1166,34 @@ label {
     
 }
 
-.bar-container h2,
-.bar-container p {
-    color: white;
-    text-align: left;
-    padding: .5rem .5rem;
+a {
+    color: var(--color-text);
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--color-heading);
+}
+
+.separator {
+    width: 100%;
+    height: 70px;
+    margin: 1.5em 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+:root[data-theme="light"] .separator {
+    background-image: url('./assets/images/barley-separator-light.svg');
+}
+
+:root[data-theme="dark"] .separator {
+    background-image: url('./assets/images/barley-separator-dark.svg');
+}
+
+.separator:hover {
+    opacity: 0.8;
 }
