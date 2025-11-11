@@ -108,7 +108,7 @@ const Navbar = () => {
                     <li className="nav-item theme-toggle-mobile-wrap">
                         <button
                             className="theme-switch theme-switch--mobile"
-                            aria-hidden="true"
+                            // aria-hidden="true"
                             aria-checked={theme === 'light'}
                             tabIndex={-1}
                             onClick={() => { toggleTheme(); }}

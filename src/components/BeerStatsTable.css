@@ -17,6 +17,7 @@
     padding: 8px 12px;
     text-align: left;
     color: var(--color-text);
+    vertical-align: middle;
 }
 
 .beer-stats-table thead tr {
@@ -40,10 +41,14 @@
 
 .beer-stats-table__swatch {
     display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     border: 2px solid gray;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    margin-bottom: .3rem;
+    
 }
 
 .beer-stats-table__swatch--dp {

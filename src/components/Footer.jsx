@@ -15,11 +15,23 @@ const Footer = () => {
                 <div>
                     <h3>Nuestras redes</h3>
                     <ul className="redes">
-                            <li><a
-                                    href="https://www.facebook.com/tauracerveza">/tauracerveza</a></li>
-                            <li><a
-                                    href="https://www.instagram.com/cervezataura">/cervezataura</a></li>
-                        </ul>
+                        <li>
+                            <a
+                                className="social-link social-link--facebook"
+                                href="https://www.facebook.com/tauracerveza"
+                            >
+                                /tauracerveza
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                className="social-link social-link--instagram"
+                                href="https://www.instagram.com/cervezataura"
+                            >
+                                /cervezataura
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
                 <div>

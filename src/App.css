@@ -1197,3 +1197,35 @@ a:hover {
 .separator:hover {
     opacity: 0.8;
 }
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+    text-decoration: none;
+    min-height: 24px;
+    line-height: 24px;
+}
+
+.social-link::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: center / contain no-repeat url("./assets/images/social-fb-light.svg");
+    transform: translateY(-1px);
+}
+
+.social-link--instagram::before {
+    background-image: url("./assets/images/social-ig-light.svg");
+}
+
+:root[data-theme="dark"] .social-link--facebook::before {
+    background-image: url("./assets/images/social-fb-dark.svg");
+}
+
+:root[data-theme="dark"] .social-link--instagram::before {
+    background-image: url("./assets/images/social-ig-dark.svg");
+}
