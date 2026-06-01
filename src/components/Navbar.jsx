@@ -1,8 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 
+const NAV_MENU_ID = 'primary-navigation';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(() => {
+        if (typeof window === 'undefined' || !window.matchMedia) {
+            return true;
+        }
+
+        try {
+            return window.matchMedia('(min-width: 1000px)').matches;
+        } catch {
+            return true;
+        }
+    });
     const [theme, setTheme] = useState(() => {
         try {
             return localStorage.getItem('theme') ||
@@ -21,10 +34,33 @@ const Navbar = () => {
     const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
 
     useEffect(() => {
-        // aplica atributo data-theme en la raíz y guarda la preferencia
+
         document.documentElement.setAttribute('data-theme', theme);
         try { localStorage.setItem('theme', theme); } catch { }
     }, [theme]);
+
+    useEffect(() => {
+        if (typeof window === 'undefined' || !window.matchMedia) {
+            return;
+        }
+
+        const mediaQuery = window.matchMedia('(min-width: 1000px)');
+        const updateMatches = (event) => {
+            setIsDesktop(event.matches);
+        };
+
+        updateMatches(mediaQuery);
+
+        try {
+            mediaQuery.addEventListener('change', updateMatches);
+            return () => mediaQuery.removeEventListener('change', updateMatches);
+        } catch {
+            mediaQuery.addListener(updateMatches);
+            return () => mediaQuery.removeListener(updateMatches);
+        }
+    }, []);
+
+    const menuDisabled = !isDesktop && !isOpen;
 
     const scrollWithOffset = (el) => {
         if (!el) return;
@@ -67,7 +103,10 @@ const Navbar = () => {
 
                 <button
                     className="menu-toggle"
-                    aria-label="Abrir menú"
+                    aria-label={isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+                    aria-expanded={isOpen}
+                    aria-controls={NAV_MENU_ID}
+                    type="button"
                     onClick={toggleMenu}
                 >
                     <span className={isOpen ? 'bar open' : 'bar'}></span>
@@ -75,31 +114,66 @@ const Navbar = () => {
                     <span className={isOpen ? 'bar open' : 'bar'}></span>
                 </button>
 
-                <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
+                <ul
+                    id={NAV_MENU_ID}
+                    className={(isDesktop || isOpen) ? 'nav-menu active' : 'nav-menu'}
+                    aria-hidden={menuDisabled}
+                    data-menu-open={!menuDisabled}
+                >
                     <li className="nav-item">
-                        <HashLink to="/#hero" className="nav-link" onClick={closeMenu} scroll={el => scrollWithOffset(el)}>
+                        <HashLink
+                            to="/#hero"
+                            className="nav-link"
+                            onClick={closeMenu}
+                            scroll={el => scrollWithOffset(el)}
+                            tabIndex={menuDisabled ? -1 : 0}
+                        >
                             Inicio
                         </HashLink>
                     </li>
 
                     <li className="nav-item">
-                        <HashLink to="/#nosotros" className="nav-link" onClick={closeMenu} scroll={el => scrollWithOffset(el)}>
+                        <HashLink
+                            to="/#nosotros"
+                            className="nav-link"
+                            onClick={closeMenu}
+                            scroll={el => scrollWithOffset(el)}
+                            tabIndex={menuDisabled ? -1 : 0}
+                        >
                             Nosotros
                         </HashLink>
                     </li>
                     <li className="nav-item">
-                        <HashLink to="/#cervezas" className="nav-link" onClick={closeMenu} scroll={el => scrollWithOffset(el)}>
+                        <HashLink
+                            to="/#cervezas"
+                            className="nav-link"
+                            onClick={closeMenu}
+                            scroll={el => scrollWithOffset(el)}
+                            tabIndex={menuDisabled ? -1 : 0}
+                        >
                             Nuestras Cervezas
                         </HashLink>
                     </li>
                     <li className="nav-item">
-                        <HashLink to="/#bar" className="nav-link" onClick={closeMenu} scroll={el => scrollWithOffset(el)}>
+                        <HashLink
+                            to="/#bar"
+                            className="nav-link"
+                            onClick={closeMenu}
+                            scroll={el => scrollWithOffset(el)}
+                            tabIndex={menuDisabled ? -1 : 0}
+                        >
                             Bar de Fábrica
                         </HashLink>
                     </li>
 
                     <li className="nav-item">
-                        <HashLink to="/#contacto" className="nav-link" onClick={closeMenu} scroll={el => scrollWithOffset(el)}>
+                        <HashLink
+                            to="/#contacto"
+                            className="nav-link"
+                            onClick={closeMenu}
+                            scroll={el => scrollWithOffset(el)}
+                            tabIndex={menuDisabled ? -1 : 0}
+                        >
                             Contacto
                         </HashLink>
                     </li>
@@ -108,11 +182,12 @@ const Navbar = () => {
                     <li className="nav-item theme-toggle-mobile-wrap">
                         <button
                             className="theme-switch theme-switch--mobile"
-                            // aria-hidden="true"
+                            role="switch"
                             aria-checked={theme === 'light'}
-                            tabIndex={-1}
+                            aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+                            type="button"
                             onClick={() => { toggleTheme(); }}
-                            title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+                            tabIndex={menuDisabled ? -1 : 0}
                         >
                             <span className="theme-switch__track" aria-hidden="true">
                                 {/* Sun SVG */}
@@ -148,11 +223,12 @@ const Navbar = () => {
                 {/* toggle desktop: aislado a la derecha */}
                 <button
                     className="theme-switch theme-switch--desktop"
-                    aria-hidden="true"
+                    role="switch"
                     aria-checked={theme === 'light'}
-                    tabIndex={-1}
+                    aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+                    type="button"
                     onClick={toggleTheme}
-                    title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+                    tabIndex={0}
                 >
                     <span className="theme-switch__track" aria-hidden="true">
                         <span className="theme-switch__icon theme-switch__icon--sun" aria-hidden="true">

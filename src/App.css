@@ -3,10 +3,39 @@
     margin: 0 auto;
     padding: 0rem;
     text-align: center;
+    width: 100%;
+    background-color: var(--color-first-bg);
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    clip: auto;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-navbar-bg);
+    color: var(--color-text);
+    z-index: 2000;
+    border-radius: 6px;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 main {
     padding-top: 70px;
+    width: 100%;
 }
 
 .navbar {
@@ -25,10 +54,11 @@ main {
 .navbar-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 0.75rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     height: 100%;
 }
 
@@ -50,6 +80,7 @@ main {
     gap: 2rem;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-item {
@@ -60,7 +91,7 @@ main {
     color: var(--color-text);
     text-decoration: none;
     font-size: 1.1em;
-    font-weight: 450;
+    font-weight: 600;
     transition: color 0.3s;
     position: relative;
 }
@@ -143,7 +174,7 @@ main {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 999px) {
     .menu-toggle {
         display: flex !important;
         align-items: center;
@@ -184,6 +215,7 @@ main {
 
     .nav-menu.active {
         right: 0;
+        visibility: visible;
     }
 
     .nav-item {
@@ -203,7 +235,7 @@ main {
     }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1000px) {
     .navbar-logo {
         display: none;
     }
@@ -225,21 +257,16 @@ main {
         margin: 0 1rem;
     }
 
-    .footer-container {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: flex-start;
-        gap: 2rem;
+}
+
+@media screen and (max-width: 999px) {
+    .nav-menu[aria-hidden="true"] {
+        visibility: hidden;
+        pointer-events: none;
     }
 
-    .footer-container>div {
-        flex: 1 1 0;
-        min-width: 0;
-        box-sizing: border-box;
-    }
-
-    .footer-container>p {
-        flex-basis: 100%;
+    .nav-menu[aria-hidden="true"] .nav-item {
+        pointer-events: none;
     }
 }
 
@@ -253,6 +280,10 @@ main {
     padding: 1rem 3.5rem;
     background-color: var(--color-second-bg);
     color: var(--color-text);
+}
+
+.ubicacion-section {
+    padding: 0;
 }
 
 .hero {
@@ -279,8 +310,8 @@ main {
 .cervezas-container h2,
 .bar-container h2 {
     font-size: 2.75rem;
-    color: var(--color-text);
-    margin-bottom: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     margin-top: 0rem;
     text-align: center;
 }
@@ -332,9 +363,9 @@ h3 {
 footer#contacto {
     position: static;
     box-sizing: border-box;
-    padding: 1rem 3rem;
+    padding: 1rem 3.5rem;
     color: var(--color-text);
-    background: transparent;
+    background-color: var(--color-first-bg);
 }
 
 /* contenedor interno: sin padding lateral para que su max-width coincida */
@@ -352,7 +383,7 @@ footer#contacto {
 }
 
 /* escritorio: dos columnas que comparten exactamente el ancho disponible */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1000px) {
     .footer-container {
         flex-direction: row;
         flex-wrap: nowrap;
@@ -416,10 +447,8 @@ footer#contacto {
 .bar-container h2 {
     color: white;
     text-shadow:
-        -2px -2px 0 rgba(0, 0, 0, 0.11),
-        2px -2px 0 rgba(0, 0, 0, 0.11),
-        -2px 2px 0 rgba(0, 0, 0, 0.11),
-        2px 2px 0 rgba(0, 0, 0, 0.11);
+        0 0 34px rgba(0, 0, 0, 0.94),
+        0 0 16px rgba(0, 0, 0, 0.78);
     margin-top: 0;
     margin-bottom: 0.5rem;  /* Reducir margen inferior */
     text-align: left;
@@ -435,7 +464,7 @@ footer#contacto {
     width: 75%;
     margin: 0;
     text-align: left;
-    opacity: 0%;
+    opacity: 100%;
     transition: opacity 0.8s ease, background-color 0.8s ease; /* agregar esta línea */
 }
 
@@ -450,7 +479,12 @@ footer#contacto {
     filter: saturate(30%);
 }
 
-.bar-section.in-view .bar-container p {
+.bar-section[data-animate="true"] .bar-container p {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.bar-section[data-animate="true"].in-view .bar-container p {
     background-color: rgba(0, 0, 0, 0.65);
     opacity: 100%;
 }
@@ -507,6 +541,7 @@ li {
     font-size: 6.5em;
     letter-spacing: 0.1em;
     padding: 0;
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.6), 0 0 5px rgba(0, 0, 0, 0.42);
 }
 
 .subtitulo {
@@ -517,6 +552,7 @@ li {
     letter-spacing: 0.6em;
     margin-top: 0.5em;
     text-transform: uppercase;
+    text-shadow: 0 0 16px rgba(0, 0, 0, 0.72), 0 0 5px rgba(0, 0, 0, 0.48);
 }
 
 
@@ -571,6 +607,18 @@ li {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .toggle-wrapper {
@@ -635,7 +683,7 @@ li {
     /* por defecto oculto, se muestra en desktop con media query */
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1000px) {
     .theme-toggle-mobile {
         display: none !important;
     }
@@ -676,13 +724,9 @@ li {
 }
 
 /* comportamiento en móviles: mostrar el toggle dentro del menú, ocultar el desktop */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 999px) {
     .theme-toggle-desktop {
         display: none !important;
-    }
-
-    .hero {
-        height: 250px;
     }
 
     .theme-toggle-mobile {
@@ -700,6 +744,55 @@ li {
         border: 1px solid rgba(255, 255, 255, 0.06);
         color: var(--color-text);
         border-radius: 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-container {
+        padding: 0 1.25rem;
+    }
+
+    .hero,
+    .nosotros-section,
+    .cervezas-section,
+    .bar-section {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .ubicacion-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .bar-container {
+        padding: 1.25rem;
+    }
+
+    footer#contacto {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .bar-container p {
+        width: 100%;
+        text-shadow:
+            0 0 12px rgba(0, 0, 0, 0.65),
+            0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-container {
+        gap: 1rem;
     }
 }
 
@@ -735,20 +828,12 @@ li {
     border-color: transparent;
 }
 
-/* remove focus/active outline/border for theme toggles and switches */
-.theme-toggle:focus,
-.theme-toggle:active,
-.theme-toggle-mobile:focus,
-.theme-toggle-mobile:active,
+/* foco del switch: halo suave similar al menú hamburguesa */
 .theme-switch:focus,
-.theme-switch:active,
-.theme-switch--desktop:focus,
-.theme-switch--desktop:active,
-.theme-switch--mobile:focus,
-.theme-switch--mobile:active {
-    outline: none !important;
-    box-shadow: none !important;
-    border-color: transparent !important;
+.theme-switch:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(217, 139, 43, 0.16);
+    border-radius: 999px;
 }
 
 /* ensure buttons are not focusable visually (tabIndex handled in JSX) */
@@ -819,7 +904,7 @@ li {
 }
 
 /* Desktop */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1000px) {
     .theme-switch--desktop {
         display: inline-flex;
         position: absolute;
@@ -1027,6 +1112,9 @@ li {
     align-self: flex-end;
     padding: 0em 0.6em;
     border-radius: 6px;
+    text-shadow:
+        0 0 16px rgba(0, 0, 0, 0.85),
+        0 0 6px rgba(0, 0, 0, 0.55);
 }
 
 /* .beer-card__desc {
@@ -1064,6 +1152,24 @@ li {
     transform: translateY(0);
 }
 
+.beer-card:focus-visible {
+    outline: 3px solid var(--color-link);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+    transform: translateY(-6px);
+}
+
+.beer-card:focus-visible .beer-card__desc,
+.beer-card:focus-visible .beer-card__medals {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.beer-card:focus-visible .beer-card__title {
+    background: rgba(0, 0, 0, 0.35);
+}
+
 
 /* Estilos para las medallas - mismo efecto que la descripción */
 .beer-card__medals {
@@ -1089,6 +1195,28 @@ li {
     pointer-events: auto;
     transform: translateY(0);
 }
+
+@media (hover: none), (pointer: coarse), (max-width: 900px) {
+    .beer-card {
+        filter: none;
+    }
+
+    .beer-card.is-visible {
+        filter: grayscale(70%);
+        border-color: #a78476;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+        transform: translateY(-8px) scale(1.02);
+    }
+
+    .beer-card.is-visible .beer-card__desc,
+    .beer-card.is-visible .beer-card__medals {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+
 
 .medal-group {
     margin-bottom: 0.5rem;
@@ -1133,7 +1261,7 @@ label {
     font-size: smaller;
     background-color: var(--color-text-field);
     border: none;
-    outline: none;
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.7), 0 0 4px rgba(0, 0, 0, 0.45);
     box-shadow: none;
     font-family: inherit; /* asegura consistencia */
     font-size: .9rem; /* o el tamaño que prefieras */
@@ -1142,17 +1270,17 @@ label {
 /* opcional: si querés mantener un indicador visual al hacer focus */
 .flat-input:focus {
     outline: 2px solid var(--color-link);
-    outline-offset: 2px;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.65), 0 0 4px rgba(0, 0, 0, 0.45);
 }
 
 .btn-brn {
     background-color: var(--btn-bg);
-    color: var(--btn-text);
-    font-weight: 700;
-    border: none;
+    color: var(--color-text);
     border-radius: 6px;
     padding: 1rem 1rem .75rem 1rem;
     margin-top: 1em;
+    font-weight: bold;
+    
 }
 
 .btn-brn:hover {
@@ -1165,6 +1293,14 @@ label {
     outline: none;
     
 }
+
+.form-instructions {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
 
 a {
     color: var(--color-text);

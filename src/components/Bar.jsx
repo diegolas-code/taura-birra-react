@@ -7,6 +7,8 @@ const Bar = () => {
         const section = sectionRef.current;
         if (!section) return;
 
+        section.dataset.animate = 'true';
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {

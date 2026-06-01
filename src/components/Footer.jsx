@@ -37,15 +37,41 @@ const Footer = () => {
                 <div>
                     <h3>Contactanos</h3>
 
-                    <form action="https://formspree.io/f/xvgrvbpz" method="POST">
-                        <label>
+                    <form
+                        action="https://formspree.io/f/xvgrvbpz"
+                        method="POST"
+                        aria-describedby="contact-form-guide"
+                    >
+                        <p id="contact-form-guide" className="form-instructions">
+                            Todos los campos son obligatorios. Te responderemos a la brevedad.
+                        </p>
+
+                        <label htmlFor="contact-email">
                             Tu correo electrónico:
-                            <input type="email" className="flat-input" name="email" />
                         </label>
-                        <label>
+                        <input
+                            id="contact-email"
+                            type="email"
+                            className="flat-input"
+                            name="email"
+                            required
+                            aria-required="true"
+                            autoComplete="email"
+                        />
+
+                        <label htmlFor="contact-message">
                             Tu mensaje:
-                            <textarea name="message" className="flat-input"></textarea>
                         </label>
+                        <textarea
+                            id="contact-message"
+                            name="message"
+                            className="flat-input"
+                            required
+                            aria-required="true"
+                            aria-describedby="contact-form-guide"
+                            minLength={10}
+                        ></textarea>
+
                         <button className="btn btn-brn" type="submit">Enviar mensaje</button>
                     </form>
 

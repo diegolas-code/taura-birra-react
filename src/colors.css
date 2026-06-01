@@ -1,3 +1,7 @@
+:root {
+    --color-whatsapp-icon: #fff;
+}
+
 :root[data-theme="light"] {
     --color-first-bg: #FAF3DC;
     --color-second-bg: #F1E0B3;
@@ -19,7 +23,7 @@
     --btn-text: white;          /* texto: marfil casi blanco */
 --btn-bg: #cba969;            /* botón normal: marrón dorado sobrio */
 --btn-hover-bg: #bfa26d;      /* hover: dorado medio */
---btn-active-bg: #D7B77A;     /* presionado: marrón oscuro profundo */
+    --btn-active-bg: #D7B77A;     /* presionado: marrón oscuro profundo */
 
 }
 
@@ -43,7 +47,7 @@
     --btn-text: #F5E6B3;          /* texto: color de tu esquema actual */
 --btn-bg: #704e2a;            /* botón normal: marrón oliva medio */
 --btn-hover-bg: #634525;      /* hover: verde seco brillante (ya presente en el tema) */
---btn-active-bg: #47331d;     /* presionado: marrón oscuro terroso */
+    --btn-active-bg: #47331d;     /* presionado: marrón oscuro terroso */
 
 
 }

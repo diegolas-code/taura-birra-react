@@ -4,7 +4,7 @@
     left: 2rem;
     width: 60px;
     height: 60px;
-    background-color: #25D366;
+    background-color: #158a46;
     color: white;
     border-radius: 50%;
     border: none;
@@ -25,7 +25,7 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: rgba(37, 211, 102, 0.8);
+    background: rgba(21, 138, 70, 0.8);
     transform: scale(1);
     opacity: 0;
     animation: whatsapp-pulse 1.5s infinite;
@@ -62,8 +62,8 @@
 .whatsapp-float svg {
     width: 36px;
     height: 36px;
-    fill: white;
-    /* margin: 0; */
+    fill: var(--color-whatsapp-icon);
+    color: var(--color-whatsapp-icon);
 }
 
 .whatsapp-float__badge {
@@ -202,7 +202,7 @@
     min-width: 40px;
     border-radius: 50%;
     border: none;
-    background: #25D366;
+    background: #158a46;
     color: white;
     cursor: pointer;
     display: flex;
@@ -213,7 +213,7 @@
 }
 
 .whatsapp-chat-send:hover:not(:disabled) {
-    background: #1EBE57;
+    background: #11763c;
 }
 
 .whatsapp-chat-send:disabled {

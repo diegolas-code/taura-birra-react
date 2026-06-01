@@ -25,11 +25,12 @@ function App() {
 
     return (
         <HashRouter>
-            <header>
+            <a className="skip-link" href="#main-content">Saltar al contenido principal</a>
+            <header id="top">
                 <Navbar />
             </header>
 
-            <main>
+            <main id="main-content">
                 <section id="hero">
                     <Hero />
                 </section>

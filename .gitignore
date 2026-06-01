@@ -10,7 +10,33 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.vite
 *.local
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Testing
+coverage
+.nyc_output
+
+# Caches
+.cache
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Package managers
+.npm
+.pnpm-store
+.pnp.*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.yarn/patches
 
 # Editor directories and files
 .vscode/*

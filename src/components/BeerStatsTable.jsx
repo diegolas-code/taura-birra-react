@@ -7,6 +7,12 @@ const MEDAL_SYMBOLS = {
     bronce: '🥉'
 };
 
+const MEDAL_LABELS = {
+    oro: 'oro',
+    plata: 'plata',
+    bronce: 'bronce'
+};
+
 const SWATCH_CLASS_BY_NAME = {
     'dorada pampeana': 'dp',
     'ginger ale': 'ga',
@@ -15,6 +21,15 @@ const SWATCH_CLASS_BY_NAME = {
     'ira (irish red ale)': 'ira',
     'ira': 'ira',
     'stout': 'stt'
+};
+
+const SWATCH_DESCRIPTION_BY_MODIFIER = {
+    dp: 'Color dorado de la Dorada Pampeana',
+    ga: 'Color ámbar claro de la Ginger Ale',
+    ipa: 'Color ámbar profundo de la IPA',
+    ira: 'Color rojizo de la Irish Red Ale',
+    stt: 'Color oscuro de la Stout',
+    default: 'Color representativo del estilo'
 };
 
 const buildMedalString = (premios) => {
@@ -32,12 +47,40 @@ const buildMedalString = (premios) => {
         }
     });
 
-    return medalString || '';
+    return medalString || ' ';
+};
+
+const buildMedalDescription = (premios) => {
+    if (!premios || typeof premios !== 'object') {
+        return 'Sin medallas registradas';
+    }
+
+    const parts = [];
+
+    ['oro', 'plata', 'bronce'].forEach(tier => {
+        const entries = Array.isArray(premios[tier]) ? premios[tier] : [];
+        const count = entries.length;
+        if (count) {
+            const label = MEDAL_LABELS[tier] ?? tier;
+            const suffix = count > 1 ? 's' : '';
+            parts.push(`${count} medalla${suffix} de ${label}`);
+        }
+    });
+
+    return parts.length ? parts.join(', ') : 'Sin medallas registradas';
 };
 
 const resolveSwatchModifier = (nombre = '') => {
     const normalized = nombre.trim().toLowerCase();
     return SWATCH_CLASS_BY_NAME[normalized] ?? 'default';
+};
+
+const describeSwatch = (modifier, nombre) => {
+    if (modifier in SWATCH_DESCRIPTION_BY_MODIFIER) {
+        return SWATCH_DESCRIPTION_BY_MODIFIER[modifier];
+    }
+    const safeName = nombre ? nombre : 'este estilo';
+    return `Color representativo de ${safeName}`;
 };
 
 const BeerStatsTable = () => {
@@ -76,27 +119,40 @@ const BeerStatsTable = () => {
     return (
         <div className="cervezas-table-wrapper">
             <table className="beer-stats-table">
+                <caption className="sr-only">
+                    Resumen de estilos de cerveza con premios obtenidos, graduación alcohólica, nivel de amargor y color de referencia.
+                </caption>
+                
                 <thead>
                     <tr>
-                        <th>Estilo</th>
-                        <th></th>
-                        <th>ABV (Grad. alcohol)</th>
-                        <th>IBU (Amargor)</th>
-                        <th>Color</th>
+                        <th scope="col">Estilo</th>
+                        <th scope="col">Premios</th>
+                        <th scope="col">ABV (Grad. alcohol)</th>
+                        <th scope="col">IBU (Amargor)</th>
+                        <th scope="col">Color</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map(({ id, nombre, premios, abv, ibu }) => {
+                    {items.map(({ id, nombre, premios, abv, ibu }, idx) => {
                         const medalDisplay = buildMedalString(premios);
+                        const medalDescription = buildMedalDescription(premios);
                         const swatchModifier = resolveSwatchModifier(nombre);
+                        const swatchDescription = describeSwatch(swatchModifier, nombre);
                         return (
-                            <tr key={id}>
-                                <td>{nombre}</td>
-                                <td>{medalDisplay}</td>
+                            <tr key={id ?? `${nombre}-${idx}`}>
+                                <th scope="row">{nombre}</th>
+                                <td>
+                                    <span aria-hidden="true">{medalDisplay}</span>
+                                    <span className="sr-only">{medalDescription}</span>
+                                </td>
                                 <td>{abv}%</td>
                                 <td>{ibu}</td>
                                 <td>
-                                    <span className={`beer-stats-table__swatch beer-stats-table__swatch--${swatchModifier}`} />
+                                    <span
+                                        className={`beer-stats-table__swatch beer-stats-table__swatch--${swatchModifier}`}
+                                        aria-hidden="true"
+                                    />
+                                    <span className="sr-only">{swatchDescription}</span>
                                 </td>
                             </tr>
                         );

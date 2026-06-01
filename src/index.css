@@ -34,6 +34,7 @@ body {
     background-color: var(--color-first-bg);
     font-family: 'Spartan', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 0.9em;
+    overflow-x: hidden;
 }
 
 h1 {

@@ -2,13 +2,31 @@
     margin: 2.5rem auto 2.5rem auto;
     max-width: 840px;
     overflow-x: auto;
-    
+    scrollbar-width: thin;
+    scrollbar-color: rgba(90, 60, 40, 0.4) transparent;
 }
 
 .beer-stats-table {
     width: 100%;
     border-collapse: collapse;
     
+}
+
+.cervezas-table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.cervezas-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cervezas-table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(90, 60, 40, 0.4);
+    border-radius: 999px;
+}
+
+.cervezas-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 60, 40, 0.55);
 }
 
 .beer-stats-table th,
@@ -20,12 +38,17 @@
     vertical-align: middle;
 }
 
+.beer-stats-table tbody tr:last-child th,
+.beer-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 .beer-stats-table thead tr {
     border-bottom: 2px solid var(--color-text);
 }
 
 .beer-stats-table td:nth-child(1) {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .beer-stats-table td:nth-child(2),
